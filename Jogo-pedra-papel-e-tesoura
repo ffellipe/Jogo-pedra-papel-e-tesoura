@@ -1,0 +1,43 @@
+import random
+
+def escolha_jogador1():
+    while True:
+        escolha = input("Escolha pedra, papel ou tesoura (ou sair para encerrar): ")
+        if escolha in ['pedra', 'papel', 'tesoura', 'sair']:
+            return escolha
+        else:
+            print("Escolha inválida. Por favor, escolha entre pedra, papel ou tesoura.")
+
+def escolha_maquina2():
+    opcoes = ['pedra', 'papel', 'tesoura']
+    escolha_maquina = random.choice(opcoes)
+    return escolha_maquina
+
+def determinar_vencedor(escolha_jogador, escolha_maquina):
+    print(f"Você escolheu: {escolha_jogador}")
+    print(f"A máquina escolheu: {escolha_maquina}")
+    
+    if escolha_jogador == escolha_maquina:
+        print("Empate!")
+    elif (escolha_jogador == 'pedra' and escolha_maquina == 'tesoura') or \
+         (escolha_jogador == 'tesoura' and escolha_maquina == 'papel') or \
+         (escolha_jogador == 'papel' and escolha_maquina == 'pedra'):
+        print("Você ganhou!")
+    else:
+        print("Você perdeu!")
+
+def jogar():
+    while True:
+        escolha_jogador = escolha_jogador1()
+        
+        if escolha_jogador == 'sair':
+            print("Obrigado por jogar!")
+            break
+        
+        escolha_maquina = escolha_maquina2()
+        determinar_vencedor(escolha_jogador, escolha_maquina)
+        print()
+
+if __name__ == "__main__":
+    print("Bem-vindo ao jogo Pedra, Papel, Tesoura!")
+    jogar()
